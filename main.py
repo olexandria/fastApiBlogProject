@@ -4,10 +4,15 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root():
+def index():
     return {"message": "Hello World"}
 
 
+@app.get("/blog/{blog_id}")
+def show(blog_id: int):
+    return {"data": blog_id}
+
+
 @app.get("/hello/{name}")
-async def say_hello(name: str):
+def say_hello(name: str):
     return {"message": f"Hello {name}"}
